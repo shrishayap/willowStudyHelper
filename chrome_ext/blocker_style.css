@@ -1,0 +1,19 @@
+:root {
+    --bg_color: lightcyan;
+    --text_size: 12px
+    --font: sans-serif;
+}
+
+
+body {
+    width: 250px;
+    height: 100px;
+    background-color: var(--bg_color);
+    font-size: var(--text_size);
+    font-family: var(--font);
+    padding-bottom: 5%;
+    padding-left: 5%;
+    padding-right: 5%;
+    padding-top: 5%;
+
+}

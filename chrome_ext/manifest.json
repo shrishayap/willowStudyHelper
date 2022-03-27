@@ -1,0 +1,19 @@
+{
+    "manifest_version": 3,
+    "name": "Study Coin",
+    "version": "1.0.0",
+
+    "content_scripts": [
+        {
+            "matches": ["<all_urls>"],
+            "js": ["blocker.js"]
+        }
+    ],
+    
+    "action":{
+        "default_popup": "blocker.html",
+        "default_title": "Study Coin"
+    },
+    "description": "Works with Study Coin to help you study more efficiently and stay distraction free."
+  
+}
