@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.min.js"></script>
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.min.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <title>Willow Stats</title>
+   
+</head>
+<body style="background-color: lightcyan; padding-left: 10%; padding-right: 10%; padding-top: 10%; padding-bottom: 10%;">
+    <h3 class="ui header">@{{ username }}</h3>
+    <div class="ui section divider"></div>
+    <h3 class="ui header"> <b>LEVEL:</b> {{ level }}</h3>
+    <p>Your level increases every time you succesfuly complete a session. Regardless of the task, a complete session makes your level go up.</p>
+    <div class="ui section divider"></div>
+    <h3 class="ui header"> <b>XP: </b> {{ xp }}</h3>
+    <p>XP is based on the dificulties of the missions you accomplished and does not decrease. </p>
+    <div class="ui section divider"></div>
+    <h3 class="ui header"> <b>CREDIT: </b> {{ credit }}</h3>
+    <p>Credits are based on the lenght of the sessions and the dificulty of the missions. Be on the lookout for future updates where credits can be used to purchase special powerup and cosmetic prizes.</p>
+
+</body>
+</html>

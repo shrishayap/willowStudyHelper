@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.min.js"></script>
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.min.css">
+	<link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+	
+	<title>Willow Study</title>
+
+	<script>
+
+	$(function() {
+		window.setInterval(function(){
+			update_study()
+		}, 1000)
+
+	
+		function update_study() {
+
+			$.ajax({
+				url: '/banned_web_attempt',
+				type: "POST",
+				dataType: 'json',
+				success: function(data) {
+					$(study_update).replaceWith(data)
+				}
+			});
+		};
+	})
+
+	var time = '0';
+	var time_carry = 0;
+
+	function start_timer() {
+		time = document.querySelector('input[name="mission"]:checked').value;
+		time_carry = time;
+		time = Number(time);
+		var clock_space = document.getElementById('right_column');
+		clock_space.innerHTML = '<div class="ui huge header" id = "counter">Huge Header</div>';
+		countdown(time);
+
+	};
+
+	//Aditya @ github
+	function countdown(minutes) {
+		var seconds = 60;
+		var mins = minutes
+		function tick() {
+			//This script expects an element with an ID = "counter". You can change that to what ever you want. 
+			var counter = document.getElementById("counter");
+			var current_minutes = mins-1
+			seconds--;
+			counter.innerHTML = current_minutes.toString() + ":" + (seconds < 10 ? "0" : "") + String(seconds);
+			if( seconds > 0 ) {
+				setTimeout(tick, 1000);
+			} else {
+				if(mins > 1){
+					countdown(mins-1);           
+				}
+			} 
+			if (counter.innerHTML == "0:00") {
+               counter.innerHTML = "Congrats! Credits have been added to your account"
+               username = document.getElementById('username').innerText
+               const Http = new XMLHttpRequest();
+               const url = 'http://127.0.0.1:5000/update_stats';
+               Http.open("POST", url, true);
+               Http.send('time='+time_carry+'&user='+username);
+           }
+		}
+		tick();
+	}
+
+
+	</script>
+</head>
+<body style="background-color: lightcyan; padding-top: 10%;">
+
+	<div class="ui segment">
+		<div class="ui two column very relaxed grid">
+		  <div class="column">
+			<br>
+			<br>
+			<br>
+			<p><b>Hello</b></p>
+			<p id = 'username'>@{{username}}</p>
+
+			<div id="study_update">
+				<b>You / your friend are: </b> {{ x }}
+			</div>
+
+			<form action="/stats" method = 'post'>
+				<input type="text" style="opacity: 0;", id = 'username', name = 'username' value = '{{ username }}'>
+				<button type="submit">See Stats</button>	
+			</form>
+
+			<br>
+			<br>
+			<br>
+
+		  </div>
+		  <div class="column" id = 'right_column'>
+
+			<div class="ui form">
+				<br>
+				<br>
+				<br>
+				<div class="grouped fields">
+				  <label>What type of mission would you like to run?</label>
+				  <div class="field">
+					<div class="ui radio checkbox">
+					  <input type="radio" name="mission" checked="checked" value = '25'>
+					  <label> <b>Recon: </b> Gains 10 XP and 25 credits for 25 minutes</label>
+					</div>
+				  </div>
+				  <div class="field">
+					<div class="ui radio checkbox">
+					  <input type="radio" name="mission" value = '35'>
+					  <label> <b>Scavenge: </b> Gains 15 XP and 35 credits for 35 minutes</label>
+					</div>
+				  </div>
+				  <div class="field">
+					<div class="ui radio checkbox">
+					  <input type="radio" name="mission" value = '45'>
+					  <label><b>Rescue: </b> Gains 20 XP and 45 credits for 45 minutes</label>
+					</div>
+				  </div>
+				</div>
+			  </div>
+
+			  <button onclick = 'start_timer()'>Start</button>
+			  <br>
+			  <br>
+			  <br>
+		  </div>
+		</div>
+		<div class="ui vertical divider">
+		  Willow
+		</div>
+	  </div>
+	
+</body>
+</html>
