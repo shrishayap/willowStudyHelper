@@ -36,4 +36,4 @@ We built Willow using various web frameworks since it had a web extension and we
 
 
 <hr>
-<b>Submitted to HooHacks 2022</b> <a href="https://devpost.com/software/willow-study-app">Devpost Link</a>
+<b>Submitted to HooHacks 2022</b> | <a href="https://devpost.com/software/willow-study-app">Devpost Link</a>
