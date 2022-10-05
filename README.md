@@ -1,6 +1,6 @@
 # Willow Study Helper
 <img src="https://github.com/shrishayap/willowStudyHelper/blob/main/logo.png" align="right" alt="Willow Study Helper Logo" width="235" height="200">
-Willow is a study helper web app inspired from the Pomodoro technique to help user stay focused and accountable by connecting you to your friends during a collaborative study session. The purpose of the app is to combat procrastination and micro-distractions that are more than prevalent in the digital age. 
+Willow is a study helper web application inspired from the Pomodoro technique to help user stay focused and accountable by connecting you to your friends during a collaborative study session. The purpose of the app is to combat procrastination and micro-distractions that are more than prevalent in the digital age. 
 
 <hr>
 
